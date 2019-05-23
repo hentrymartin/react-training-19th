@@ -1,0 +1,17 @@
+{
+  "name": "basic-setup",
+  "version": "1.0.0",
+  "description": "This is a basic setup for my youtube tutorial",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "babel ./src --out-dir ./build --watch"
+  },
+  "author": "Hentry Martin",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.5"
+  }
+}
