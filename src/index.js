@@ -1,196 +1,171 @@
-'use strict';
+// Variables
+
+var name = 'hentry';
+const name1 = 'martin';
+let city = 'bengaluru';
+city = 'chennai';
+console.log(name, name1, city);
+var student = 'Poorva';
+// Scopes
 
 // Global scope
-var a = 10; // const reference change
-// function printA() {
-//   // Functional scope
-//   var b = 20;
-//   if (b === 20) {
-//     // block scope
-//     const c = [];
-//     c.push(1);
-//     c = [];
-//     console.log(c);
-//   }
-// }
-// let
-// function printA() {
-//   // Functional scope
-//   var b = 20;
-//   if (b === 20) {
-//     // block scope
-//     let c = [];
-//     c.push(1);
-//     c = [];
-//     console.log(c);
-//   }
-// }
-// Anonymous function
-// Named function
-// Callback function
-// Closure function
-// Arrow function
-// Anonymous function
-// const printA = function() {
-//   console.log('something');
-// };
-// // Name function
-// function printA() {
-//   console.log('something');
-// }
-// function processing(callback) {
-//   callback();
-// }
-// processing(function() {
-//   console.log('processed');
-// });
-// const callbackFunc = function() {
-//   console.log('I am callback');
-// };
-// processing(callbackFunc);
-// function processing(callback) {
-//   console.log('I am working');
-//   callback();
-// }
-// function map(array, propName) {
-//   const result = [];
-//   for (let index = 0; index < array.length; index++) {
-//     result.push(array[propName]);
-//   }
-//   return result;
-// }
-// function processing() {
-//   const students = [
-//     {
-//       name: 'hentry',
-//       remarks: 'Useless fellow',
-//     },
-//     {
-//       name: 'martin',
-//       remarks: 'Useless fellow',
-//     },
-//   ];
-//   return students.map(function(student) {
-//     return student.name;
-//   });
-// }
-// console.log(processing());
-// printA();
-// Cloure
-// function parent() {
-//   var a = 10;
-//   console.log('I am from parent');
-//   return function() {
-//     console.log(a);
-//   };
-// }
-// const ref = parent();
-// ref();
-// Arrow function
-// function processing(callback) {
-//   callback();
-// }
-// processing(() => {
-//   console.log(this);
-// });
+// Functional Scope
+
+// Variable hoisting
+
+// Types of functions
+
+// named
+// anonymous
+// callback
+// closure
+// Arrow
+
+// This object
 
 const teacher = {
-  name: 'Teacher',
-  getName: function getName() {
-    console.log(this);
-  },
+  name: 'martin',
 };
 
-var student = {
-  name: 'Shweta',
-  getName: function getName() {
-    console.log(this);
+const student = {
+  name: 'Hentry',
+  getName: function(city, state) {
+    console.log('inside getName', this, city, state);
   },
 };
-
-student.getName();
-var ref = student.getName;
-window.ref();
 
 // bind, apply
-const boundFunc = student.getName.bind(teacher);
-boundFunc();
-// for (var i = 0; i < 10; i++) {
-//   (function(i) {
+student.getName.bind(teacher, 'bengaluru', 'karnataka')();
+
+const main2 = callback => {
+  const a = 10;
+  return function() {
+    console.log('I am a closure', a);
+  };
+};
+
+const ref = main2();
+ref();
+
+main();
+
+function main() {
+  var first;
+  var student = 'Tamojit';
+  console.log(student);
+  const a = 10;
+  const b = '10';
+  if (a === b) {
+    first = 'First';
+  }
+  console.log(first);
+}
+
+function main1() {
+  var student = 'Tamojit';
+  console.log(student);
+}
+
+main1();
+
+// Array Methods
+// map
+// filter
+// reduce
+const cities = [
+  {
+    name: 'delhi',
+    id: 1,
+    location: {
+      lat: '50.48',
+      lng: '14.90',
+    },
+  },
+  {
+    name: 'bengaluru',
+    id: 2,
+    location: {
+      lat: '50.48',
+      lng: '14.90',
+    },
+  },
+  {
+    name: 'mumbai',
+    id: 3,
+    location: {
+      lat: '50.48',
+      lng: '14.90',
+    },
+  },
+];
+
+const cityString = cities.reduce((acc, city, index) => {
+  return `${acc}${city.name} `;
+}, '');
+
+const reduce = function(array, initialValue, propName) {
+  let result = initialValue || '';
+
+  for (let index = 0; index < array.length; index++) {
+    result = result + array[index][propName];
+  }
+
+  return result;
+};
+
+const citiesCombined = reduce(cities, '', 'name');
+const citiesToBeFormatted = [...cities];
+
+citiesToBeFormatted.push({
+  name: 'chennai',
+  id: 4,
+  location: {
+    lat: '50.48',
+    lng: '14.90',
+  },
+});
+console.log(cities, citiesToBeFormatted);
+
+const chennai = {
+  name: 'chennai',
+  id: 4,
+  location: {
+    lat: '50.48',
+    lng: '14.90',
+  },
+};
+
+const newCity = { ...chennai };
+
+newCity.name = 'Amaravathi';
+
+console.log(chennai, newCity);
+
+// How reduce works internally
+// Copy object without reference
+// Copy array without reference
+// Event loop
+
+// for (var index = 0; index < 5; index++) {
+//   (function(index) {
 //     setTimeout(function() {
-//       console.log(i);
+//       console.log(index);
 //     }, 1000);
-//   })(i);
+//   })(index);
 // }
 
-// IIFE - immediate invocation function execution
+console.log(1);
 
-// console.log(1);
-// setTimeout(function() {
-//   console.log(2);
-// }, 1000);
+setTimeout(function() {
+  console.log(2);
+}, 100);
 
-// setTimeout(function() {
-//   console.log(3);
-// }, 10);
+setTimeout(function() {
+  console.log(3);
+}, 1000);
 
-// setTimeout(function() {
-//   console.log(4);
-// }, 0);
+setTimeout(function() {
+  console.log(4);
+}, 0);
 
-// console.log(5);
-
-// Rohith 1, 5, 4, 3, 2
-// Shweta 1, 4, 5, 3, 2
-// Arun 1, 5, 4, 3, 2
-
-// Data types
-
-// Primitives
-// 1. Number
-// 2. String
-// 3. Boolean
-
-// Special types
-// 4. null
-// 5. undefined
-
-// Non primitives
-// 6. Object
-// 7. Array
-
-// function findType() {
-//   const a = {};
-//   console.log(a instanceof Array);
-// }
-
-// Truthy / Falsy value
-
-// const b = false;
-// console.log(!!b);
-// findType();
-
-// function types() {
-//   const str = '';
-
-//   if (!!str) {
-//     console.log('asdsd');
-//   }
-// }
-
-// types();
-
-// Inheritance
-// function Car(company) {
-//   this.company = company;
-// }
-
-// function Vehicle(type) {
-//   this.type = type;
-// }
-
-// const vehicle = new Vehicle('4 wheeler');
-// const car = Object.create(vehicle);
-// car.company = 'Benz';
-
-// console.log(car.type);
+console.log(5);
